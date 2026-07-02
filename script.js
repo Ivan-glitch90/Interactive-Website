@@ -20,19 +20,28 @@ button.addEventListener("click",function(){
 async function coordinates(textbox) {
     let location = await fetch("https://geocoding-api.open-meteo.com/v1/search?name="+textbox+"&count=1&language=en&format=json");
     let geo = await location.json();
-    let lat = geo.results[0].latitude;
+    let lat = geo.results[0].latitude;//accessing the object and the array to pull and save the value of latitude and longitud
     let long = geo.results[0].longitude;
-    weather(lat,long);
+    weather(lat,long); //calling weather and sending parameters
     
 }
 
 //Fetch request for weather
-async function weather(lat,long) { 
-    let data = await fetch("https://api.open-meteo.com/v1/forecast?latitude="+lat+"&longitude="+long+"&hourly=temperature_2m,rain&current=temperature_2m,is_day,wind_speed_10m&forecast_days=1&wind_speed_unit=mph&temperature_unit=fahrenheit");
-    let at_the_moment = await data.json();
-    let emoji = at_the_moment.current.is_day === 1 ? "Have a great day☀️" : "Good night 🌙"; // ternary operator! 😲 // the idea is: day? or night? show an emoji depending of the time.
-    let dateObject = new Date(at_the_moment.current.time);
-    let display = document.getElementById("weather-result");
-    display.innerHTML = `The date and time is: ${dateObject.toLocaleString()}, the temperature is ${at_the_moment.current.temperature_2m}°F, the wind speed is: ${at_the_moment.current.wind_speed_10m} MPH, ${emoji}`;
+async function weather(lat, long) { //parameters from coordinates
+    let data = await fetch("https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + long + "&hourly=temperature_2m,rain&current=temperature_2m,is_day,wind_speed_10m&forecast_days=1&wind_speed_unit=mph&temperature_unit=fahrenheit");// API allowed me to pick the info that i wanted
+    let at_the_moment = await data.json(); //converting data to json format.
+    let emoji = at_the_moment.current.is_day === 1 ? "Have a great day ☀️" : "Good night 🌙"; // NEW - ternary operator! 😲 // the idea is: day? or night? show an emoji depending of the time.
+    let dateObject = new Date(at_the_moment.current.time); //Example to convert zulu time to normal time. I dont think this is working at the moment need to research more
+    let display = document.getElementById("weather-result"); //selecting where to send the info
+    let time = document.getElementById("time");
+    let tempa = document.getElementById("temp");
+    let sped = document.getElementById("speed");
+    time.innerHTML = `The date and time is: ${dateObject.toLocaleString()}`;
+    tempa.innerHTML = `the temperature is ${at_the_moment.current.temperature_2m}°F`;
+    sped.innerHTML = `the wind speed is: ${at_the_moment.current.wind_speed_10m} MPH`;
+
+
+    //display.innerHTML = `The date and time is: ${dateObject.toLocaleString()}, the temperature is ${at_the_moment.current.temperature_2m}°F, the wind speed is: ${at_the_moment.current.wind_speed_10m} MPH, ${emoji}`;// sending the info //this was before css and just to display the data.
+    
     //console.log(current);
 }

@@ -1,3 +1,44 @@
-container-fluid{
-    padding: 300px, 300px;
+
+
+.header{
+    background-color:  rgb(76, 144, 233);
+    text-align: center;
+    padding: 50px 15px;
+    font-family: "Bricolage Grotesque";
+    border-bottom: 1px solid rgb(231, 239, 245);
+    
+}
+
+
+.container-fluid{
+    background-color: rgb(233, 227, 227);
+    padding: 150px 150px;
+}
+
+
+#get_it_button{
+    background-color: rgb(76, 144, 233);
+    color: rgb(251, 249, 249);
+    transition: all 0.1s ease; 
+    
+}
+
+#get_it_button:hover{
+  background-color: #2980b9;
+  color: #f1f1f1;
+}
+
+.card{
+    flex-direction: row;
+    align-items: center;
+    gap: 100px;
+    border-radius: 15px;
+}
+
+.card-body h5{
+text-align: center;
+}
+
+.card-body p{
+    text-align: center;
 }
