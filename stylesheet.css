@@ -30,9 +30,11 @@
 
 .card{
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 100px;
+    gap: 30px;
     border-radius: 15px;
+
 }
 
 .card-body h5{
@@ -42,3 +44,54 @@ text-align: center;
 .card-body p{
     text-align: center;
 }
+
+.container-fluid{
+    background-color: rgb(233, 227, 227);
+    padding: 40px 20px;
+}
+
+@media (min-width: 768px) {
+    .container-fluid {
+        padding: 100px 150px;
+    }
+}
+
+.day_night{
+    align-items: center;
+    padding: 15px 15px;
+}
+
+/* Footer added July 3rd 2026*/
+
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 48px;
+    border-top: 1px solid #2a2318;
+    margin-top: 80px;
+}
+
+.footer-copy {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #6b6050;
+}
+
+.footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+}
+
+.footer-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6b6050;
+    text-decoration: none;
+}
+

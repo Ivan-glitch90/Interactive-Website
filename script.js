@@ -32,14 +32,15 @@ async function weather(lat, long) { //parameters from coordinates
     let at_the_moment = await data.json(); //converting data to json format.
     let emoji = at_the_moment.current.is_day === 1 ? "Have a great day ☀️" : "Good night 🌙"; // NEW - ternary operator! 😲 // the idea is: day? or night? show an emoji depending of the time.
     let dateObject = new Date(at_the_moment.current.time); //Example to convert zulu time to normal time. I dont think this is working at the moment need to research more
-    let display = document.getElementById("weather-result"); //selecting where to send the info
+  //  let display = document.getElementById("weather-result"); //selecting where to send the info - replaced with new version Jul 3rd 2026
     let time = document.getElementById("time");
     let tempa = document.getElementById("temp");
     let sped = document.getElementById("speed");
-    time.innerHTML = `The date and time is: ${dateObject.toLocaleString()}`;
-    tempa.innerHTML = `the temperature is ${at_the_moment.current.temperature_2m}°F`;
-    sped.innerHTML = `the wind speed is: ${at_the_moment.current.wind_speed_10m} MPH`;
-
+    let dia = document.getElementById("emoji");
+    time.innerHTML = `${dateObject.toLocaleString()}`;
+    tempa.innerHTML = `The temperature is ${at_the_moment.current.temperature_2m}°F`;
+    sped.innerHTML = `The wind speed is: ${at_the_moment.current.wind_speed_10m} MPH`;
+    dia.innerHTML = `${emoji}`;
 
     //display.innerHTML = `The date and time is: ${dateObject.toLocaleString()}, the temperature is ${at_the_moment.current.temperature_2m}°F, the wind speed is: ${at_the_moment.current.wind_speed_10m} MPH, ${emoji}`;// sending the info //this was before css and just to display the data.
     
